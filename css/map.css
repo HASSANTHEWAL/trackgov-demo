@@ -1,0 +1,325 @@
+/* map.css
+   Styles for the live map page: the vehicle list, the map and the car details card.
+   Also makes Leaflet's own controls dark, to match the rest of the site. */
+
+/* List on the left, map on the right. The page fills the screen height. */
+.map-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+  height: calc(100vh - 190px);
+  min-height: 520px;
+}
+
+/* ---------- vehicle list ---------- */
+
+.vehicle-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-height: 0; /* lets the list scroll inside the panel */
+  padding: 16px;
+  background: var(--navy);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.vehicle-search {
+  width: 100%;
+  padding: 11px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.vehicle-search::placeholder {
+  color: var(--muted);
+}
+
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.filter-chip {
+  padding: 5px 10px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.filter-chip b {
+  margin-left: 4px;
+  color: var(--text);
+}
+
+.filter-chip.is-active {
+  border-color: var(--teal);
+  background: rgba(22, 184, 166, 0.14);
+  color: var(--teal);
+}
+
+.vehicle-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+  margin: 0 -6px;
+  padding: 0 6px;
+}
+
+.vehicle-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.vehicle-row:hover {
+  background: var(--navy2);
+}
+
+.vehicle-row.is-selected {
+  border-color: var(--teal);
+  background: var(--navy2);
+}
+
+.vehicle-row-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.vehicle-row-text strong {
+  display: block;
+  font-size: 0.95rem;
+  letter-spacing: 0.02em;
+}
+
+.vehicle-row-text small {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.no-results {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- map ---------- */
+
+.map-area {
+  position: relative;
+  min-height: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+}
+
+.live-map {
+  width: 100%;
+  height: 100%;
+  background: var(--ink);
+}
+
+/* Turns the light OpenStreetMap tiles dark: invert the colors, turn the hue back
+   so water stays blue-ish, then dim them. Only the tiles change, not the markers. */
+.live-map .leaflet-tile-pane {
+  filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(0.6);
+}
+
+.map-legend {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 500; /* above the map tiles */
+  display: flex;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 10px;
+  background: rgba(10, 22, 40, 0.88);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.map-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ---------- details card of the chosen car ---------- */
+
+.vehicle-info {
+  position: absolute;
+  left: 12px;
+  bottom: 28px;
+  z-index: 500;
+  width: min(340px, calc(100% - 24px));
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(10, 22, 40, 0.95);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.info-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.info-top strong {
+  display: block;
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+.info-top span {
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.info-close {
+  padding: 0 4px;
+  border: 0;
+  background: transparent;
+  color: var(--muted);
+  font-size: 1.4rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.info-where {
+  margin: 12px 0 0;
+  font-size: 0.9rem;
+}
+
+.info-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 16px;
+  margin: 14px 0 0;
+}
+
+.info-details dt {
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.info-details dd {
+  margin: 2px 0 0;
+  font-size: 0.95rem;
+}
+
+.info-note {
+  margin: 14px 0 0;
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.info-link {
+  display: inline-block;
+  margin-top: 12px;
+  color: var(--teal);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+/* ---------- dark Leaflet controls ---------- */
+
+.leaflet-container {
+  font-family: inherit;
+}
+
+.leaflet-bar a,
+.leaflet-bar a:hover {
+  background: var(--navy);
+  color: var(--text);
+  border-bottom-color: var(--line);
+}
+
+.leaflet-control-attribution.leaflet-control {
+  background: rgba(5, 11, 20, 0.8);
+  color: var(--muted);
+}
+
+.leaflet-control-attribution a {
+  color: var(--teal);
+}
+
+.leaflet-tooltip {
+  border: 1px solid var(--line);
+  background: var(--navy);
+  color: var(--text);
+  box-shadow: none;
+}
+
+.leaflet-tooltip-top::before {
+  border-top-color: var(--navy);
+}
+
+/* ---------- phones and small tablets ---------- */
+
+@media (max-width: 860px) {
+  /* Map first, list under it */
+  .map-layout {
+    display: flex;
+    flex-direction: column-reverse;
+    height: auto;
+    min-height: 0;
+  }
+
+  .map-area {
+    height: auto;
+  }
+
+  .live-map {
+    height: 60vh;
+    min-height: 360px;
+  }
+
+  /* On a phone the card would hide most of the map, so it goes under the map instead. */
+  .vehicle-info {
+    position: static;
+    width: auto;
+    border: 0;
+    border-top: 1px solid var(--line);
+    border-radius: 0;
+    box-shadow: none;
+  }
+
+  .vehicle-list {
+    max-height: 420px;
+  }
+
+  .map-legend {
+    left: 12px;
+    right: auto;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+}

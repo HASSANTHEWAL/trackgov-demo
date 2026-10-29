@@ -1,0 +1,149 @@
+/* locations.css
+   Styles only used on the official locations page: the map, the form and the lists.
+   The dark map comes from css/map.css, panels and buttons from css/app.css. */
+
+/* The map on the left, the form and lists on the right */
+.locations-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 380px;
+  gap: 20px;
+  align-items: start;
+}
+
+.locations-map-area {
+  position: sticky;
+  top: 20px;
+  height: calc(100vh - 200px);
+  min-height: 480px;
+}
+
+.locations-side .panel {
+  margin-bottom: 16px;
+}
+
+/* ---------- legend circles ---------- */
+
+.legend-circle {
+  width: 12px;
+  height: 12px;
+  border: 2px solid;
+  border-radius: 50%;
+}
+
+.legend-circle.is-official {
+  border-color: var(--teal);
+  background: rgba(22, 184, 166, 0.2);
+}
+
+.legend-circle.is-added {
+  border-color: #7ff3e4;
+  background: rgba(127, 243, 228, 0.45);
+}
+
+.legend-circle.is-unofficial {
+  border-color: var(--alert);
+  border-style: dashed;
+}
+
+/* ---------- form ---------- */
+
+.location-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.location-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.location-form .full-width {
+  grid-column: 1 / -1;
+}
+
+.form-message {
+  min-height: 1.2em;
+  margin: 0;
+  font-size: 0.88rem;
+}
+
+.form-message.is-error {
+  color: var(--alert);
+}
+
+.form-message.is-success {
+  color: var(--teal);
+}
+
+/* ---------- lists ---------- */
+
+.location-group h3 {
+  margin: 18px 0 8px;
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.location-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.location-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+.location-list li:last-child {
+  border-bottom: 0;
+}
+
+.location-list small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.location-list .link-button {
+  flex: none;
+  font-size: 0.8rem;
+}
+
+.location-list .delete-button {
+  color: var(--alert);
+}
+
+@media (max-width: 1100px) {
+  .locations-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .locations-map-area {
+    position: relative;
+    top: 0;
+    height: 55vh;
+    min-height: 340px;
+  }
+
+  /* map.css makes .live-map taller on phones; here the map fills its own box */
+  .locations-map-area .live-map {
+    height: 100%;
+    min-height: 0;
+  }
+}

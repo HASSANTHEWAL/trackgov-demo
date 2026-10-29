@@ -1,0 +1,133 @@
+/* fuel.css
+   Styles only used on the fuel report page: the mismatch label, the refuel form and the refuel log.
+   Buttons, cards, panels and tables come from css/app.css. */
+
+/* The mismatch % in the table. Over 5% is red. */
+.mismatch {
+  display: inline-block;
+  min-width: 70px;
+  padding: 3px 10px;
+  border-radius: 99px;
+  background: rgba(22, 184, 166, 0.12);
+  color: var(--teal);
+  font-weight: 600;
+  text-align: center;
+}
+
+.mismatch.is-over {
+  background: rgba(242, 99, 99, 0.16);
+  color: var(--alert);
+}
+
+.mismatch.is-missing {
+  background: transparent;
+  color: var(--muted);
+}
+
+.data-table tr.is-over td:first-child {
+  box-shadow: inset 3px 0 0 var(--alert);
+}
+
+/* ---------- refuel form ---------- */
+
+.refuel-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.refuel-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.refuel-form .full-width {
+  grid-column: 1 / -1;
+}
+
+.refuel-form small {
+  font-size: 0.75rem;
+}
+
+.refuel-form input[type="file"] {
+  color: var(--text);
+  font-size: 0.85rem;
+}
+
+.form-message {
+  margin: 0;
+  min-height: 1.2em;
+  font-size: 0.9rem;
+}
+
+.form-message.is-error {
+  color: var(--alert);
+}
+
+.form-message.is-success {
+  color: var(--teal);
+}
+
+/* ---------- refuel log ---------- */
+
+.refuel-log {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 560px;
+  margin: 16px 0 0;
+  padding: 0;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.refuel-log li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--ink);
+}
+
+.refuel-log li.is-new {
+  border-color: rgba(22, 184, 166, 0.5);
+}
+
+.refuel-log strong {
+  display: block;
+}
+
+.refuel-log small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.refuel-log .log-amount {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.remove-button {
+  margin-top: 4px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--alert);
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+@media (max-width: 860px) {
+  .refuel-form {
+    grid-template-columns: 1fr;
+  }
+}

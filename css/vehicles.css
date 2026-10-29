@@ -1,0 +1,89 @@
+/* vehicles.css
+   Styles only used on the vehicles page: the filters, the "No GPS yet" label and the add form.
+   The table, panels and buttons come from css/app.css. */
+
+.count-label {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.filter-select {
+  width: auto;
+  min-width: 160px;
+}
+
+/* A vehicle added by an Admin has no GPS trip yet */
+.status-pill.status-none {
+  background: transparent;
+  border: 1px dashed var(--line);
+  color: var(--muted);
+}
+
+.row-actions {
+  text-align: right;
+}
+
+.row-actions a {
+  color: var(--teal);
+  font-size: 0.85rem;
+}
+
+.row-actions .delete-button {
+  color: var(--alert);
+}
+
+/* ---------- add form ---------- */
+
+.vehicle-form {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.vehicle-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--muted);
+  font-size: 0.85rem;
+}
+
+.vehicle-form .form-message {
+  grid-column: 1 / 3;
+  align-self: center;
+  min-height: 1.2em;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.form-message.is-error {
+  color: var(--alert);
+}
+
+.form-message.is-success {
+  color: var(--teal);
+}
+
+.vehicle-form-buttons {
+  grid-column: 3 / 5;
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+@media (max-width: 860px) {
+  .filter-select {
+    flex: 1;
+  }
+
+  .vehicle-form {
+    grid-template-columns: 1fr;
+  }
+
+  .vehicle-form .form-message,
+  .vehicle-form-buttons {
+    grid-column: 1;
+  }
+}

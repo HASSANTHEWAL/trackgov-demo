@@ -1,0 +1,572 @@
+/* app.css
+   Layout shared by the app pages (map, fuel, alerts...): a sidebar on desktop,
+   a bottom menu on phones, page headings and status colors.
+   Load css/style.css first: the colors and fonts come from its :root. */
+
+:root {
+  --amber: #f5a524; /* parked */
+  --grey: #6b7a90; /* offline */
+  --alert: #f26363; /* only for alerts */
+  --sidebar-width: 240px;
+  --bottom-nav-height: 64px;
+}
+
+/* ---------- page layout ---------- */
+
+body.app {
+  display: grid;
+  grid-template-columns: var(--sidebar-width) 1fr;
+  min-height: 100vh;
+}
+
+.app-main {
+  min-width: 0; /* lets wide content (like the map) shrink instead of pushing the page wider */
+  padding: 32px clamp(20px, 3vw, 40px) 40px;
+}
+
+/* style.css gives every <section> a big padding for the landing page. App pages don't want it. */
+body.app section {
+  padding: 0;
+}
+
+/* ---------- sidebar (desktop) ---------- */
+
+.app-sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: 28px 16px 20px;
+  background: var(--navy);
+  border-right: 1px solid var(--line);
+}
+
+.side-logo img {
+  display: block;
+  width: 150px;
+  height: auto;
+  margin-left: 10px;
+}
+
+.side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.side-label {
+  margin: 14px 10px 6px;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+a.nav-link:hover {
+  background: var(--navy2);
+}
+
+.nav-link.is-current {
+  background: rgba(22, 184, 166, 0.14);
+  color: var(--teal);
+  font-weight: 600;
+}
+
+/* Pages that are not built yet */
+.nav-link.is-soon {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.nav-link small {
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.nav-badge {
+  min-width: 22px;
+  padding: 1px 7px;
+  border-radius: 99px;
+  background: var(--alert);
+  color: #fff;
+  font-size: 0.75rem;
+  text-align: center;
+}
+
+.side-foot {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 0 10px;
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.side-foot a:hover {
+  color: var(--teal);
+}
+
+/* Who is logged in */
+.side-account {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--navy2);
+}
+
+.side-account span {
+  display: block;
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.side-account strong {
+  display: block;
+  margin: 2px 0 6px;
+  color: var(--text);
+  font-size: 1rem;
+}
+
+/* A button that looks like a link */
+.link-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--teal);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.link-button:hover {
+  text-decoration: underline;
+}
+
+/* The role bar at the top of app pages on phones (hidden on desktop) */
+.phone-account {
+  display: none;
+}
+
+/* ---------- bottom menu (phones) ---------- */
+
+.app-bottom-nav {
+  display: none;
+}
+
+/* ---------- page heading ---------- */
+
+.page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.page-head .eyebrow {
+  margin-bottom: 10px;
+}
+
+.page-head h1 {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  line-height: 1;
+}
+
+.page-head p {
+  margin: 10px 0 0;
+  color: var(--muted);
+}
+
+/* A small "live" label with a blinking dot */
+.live-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  background: var(--navy);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.live-chip b {
+  color: var(--text);
+  font-variant-numeric: tabular-nums;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--teal);
+  animation: live-blink 1.6s infinite;
+}
+
+@keyframes live-blink {
+  50% {
+    opacity: 0.25;
+  }
+}
+
+.head-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ---------- buttons and inputs ---------- */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 11px 18px;
+  border: 1px solid var(--teal);
+  border-radius: 10px;
+  background: var(--teal);
+  color: var(--ink);
+  font: inherit;
+  font-size: 0.92rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button:hover {
+  filter: brightness(1.08);
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--text);
+  border-color: var(--line);
+}
+
+.text-input,
+.app-main select,
+.app-main input[type="number"],
+.app-main input[type="time"],
+.app-main input[type="text"] {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--ink);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.95rem;
+}
+
+.text-input::placeholder,
+.app-main input::placeholder {
+  color: var(--muted);
+}
+
+/* Makes the browser's own time picker and number arrows dark too */
+.app-main input,
+.app-main select {
+  color-scheme: dark;
+}
+
+/* ---------- stat cards ---------- */
+
+.stat-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.stat-card {
+  padding: 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--navy);
+}
+
+.stat-card span {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.stat-card strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 1.7rem;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-card small {
+  display: block;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.stat-card.is-alert {
+  border-color: rgba(242, 99, 99, 0.5);
+}
+
+.stat-card.is-alert strong {
+  color: var(--alert);
+}
+
+/* ---------- panels and tables ---------- */
+
+.panel {
+  margin-bottom: 20px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--navy);
+}
+
+.panel h2 {
+  font-size: 1.25rem;
+  letter-spacing: -0.02em;
+}
+
+.panel-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.panel-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+}
+
+.panel-tools .text-input {
+  width: 240px;
+}
+
+.panel-note {
+  margin: 12px 0 0;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.check-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--muted);
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.check-label input {
+  accent-color: var(--teal);
+}
+
+/* Wide tables scroll sideways inside their panel, so the page itself never does. */
+.table-scroll {
+  overflow-x: auto;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.data-table th {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-align: left;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--line);
+  white-space: nowrap;
+}
+
+.data-table tbody tr:hover {
+  background: var(--navy2);
+}
+
+.data-table .number {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table td small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.78rem;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: start;
+}
+
+.two-columns .panel {
+  margin-bottom: 0;
+}
+
+/* ---------- status colors (moving, parked, offline, alert) ---------- */
+
+.status-pill {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 99px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.status-dot {
+  flex: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.status-pill.status-moving {
+  background: rgba(22, 184, 166, 0.15);
+  color: var(--teal);
+}
+.status-pill.status-parked {
+  background: rgba(245, 165, 36, 0.15);
+  color: var(--amber);
+}
+.status-pill.status-offline {
+  background: rgba(107, 122, 144, 0.2);
+  color: #a9b6c8;
+}
+.status-pill.status-alert {
+  background: rgba(242, 99, 99, 0.16);
+  color: var(--alert);
+}
+
+.status-dot.status-moving {
+  background: var(--teal);
+}
+.status-dot.status-parked {
+  background: var(--amber);
+}
+.status-dot.status-offline {
+  background: var(--grey);
+}
+.status-dot.status-alert {
+  background: var(--alert);
+}
+
+/* ---------- phones and small tablets ---------- */
+
+@media (max-width: 860px) {
+  body.app {
+    display: block;
+    padding-bottom: var(--bottom-nav-height);
+  }
+
+  .app-sidebar {
+    display: none;
+  }
+
+  .app-main {
+    padding: 24px 16px 32px;
+  }
+
+  .phone-account {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 20px;
+    padding: 10px 14px;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    background: var(--navy);
+    color: var(--muted);
+    font-size: 0.85rem;
+  }
+
+  .phone-account strong {
+    color: var(--text);
+  }
+
+  .two-columns {
+    grid-template-columns: 1fr;
+  }
+
+  .panel {
+    padding: 16px;
+  }
+
+  .panel-tools,
+  .panel-tools .text-input {
+    width: 100%;
+  }
+
+  .app-bottom-nav {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000; /* above the map */
+    display: flex;
+    height: var(--bottom-nav-height);
+    padding: 8px 8px env(safe-area-inset-bottom, 0px);
+    background: var(--navy);
+    border-top: 1px solid var(--line);
+  }
+
+  .app-bottom-nav .nav-link {
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2px;
+    padding: 4px;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+
+  .app-bottom-nav .nav-link small {
+    font-size: 0.55rem;
+  }
+
+  .app-bottom-nav .nav-badge {
+    display: none;
+  }
+}

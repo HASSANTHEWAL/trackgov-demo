@@ -1,0 +1,163 @@
+/* alerts.css
+   Styles only used on the alerts page: the tabs and the alert cards.
+   Buttons and the "demo" label come from css/app.css and css/style.css. */
+
+/* ---------- tabs ---------- */
+
+.alert-tabs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.alert-tab {
+  margin-bottom: -1px; /* sits on top of the line under the tabs */
+  padding: 10px 16px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-size: 0.95rem;
+  cursor: pointer;
+}
+
+.alert-tab b {
+  margin-left: 6px;
+  padding: 1px 8px;
+  border-radius: 99px;
+  background: var(--navy2);
+  color: var(--text);
+  font-size: 0.78rem;
+}
+
+.alert-tab.is-active {
+  border-bottom-color: var(--teal);
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* ---------- alert cards ---------- */
+
+.alert-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.alert-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 18px;
+  align-items: start;
+  padding: 18px 20px;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--alert);
+  border-radius: 14px;
+  background: var(--navy);
+}
+
+.alert-card.is-reviewed {
+  border-left-color: var(--teal);
+}
+
+.alert-card.is-dismissed {
+  border-left-color: var(--grey);
+  opacity: 0.75;
+}
+
+/* The big clock time when the alert started */
+.alert-when {
+  min-width: 64px;
+}
+
+.alert-when strong {
+  display: block;
+  color: var(--alert);
+  font-size: 1.4rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.alert-card.is-reviewed .alert-when strong {
+  color: var(--teal);
+}
+
+.alert-card.is-dismissed .alert-when strong {
+  color: var(--muted);
+}
+
+.alert-when small {
+  color: var(--muted);
+  font-size: 0.75rem;
+}
+
+.alert-body h2 {
+  font-size: 1.1rem;
+  letter-spacing: -0.01em;
+}
+
+.alert-body p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.alert-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 0.85rem;
+}
+
+.alert-facts li span {
+  color: var(--muted);
+}
+
+.alert-decision {
+  margin-top: 10px;
+  font-size: 0.85rem;
+}
+
+.alert-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.alert-actions .button {
+  padding: 8px 14px;
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.alert-actions a {
+  color: var(--teal);
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+.alert-empty {
+  padding: 32px;
+  border: 1px dashed var(--line);
+  border-radius: 14px;
+  color: var(--muted);
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+  .alert-card {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .alert-actions {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+}

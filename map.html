@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Live map · TrackGov</title>
+    <meta name="description" content="Live positions of the 20 TrackGov pilot vehicles (simulated data)." />
+    <link rel="icon" href="assets/img/logo-mark.png" />
+    <!-- Leaflet 1.9.4, the map library (the only library we use) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/map.css" />
+  </head>
+  <body class="app" data-page="map.html">
+    <!-- Filled by js/common.js -->
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <main class="app-main">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">GPS tracking</p>
+          <h1>Live map</h1>
+          <p>Where the 20 pilot vehicles are right now, in Yogyakarta. Simulated data.</p>
+        </div>
+        <div class="live-chip" title="Positions update every few seconds">
+          <i class="live-dot"></i> Demo time <b id="demo-clock">--:--:--</b>
+        </div>
+      </div>
+
+      <div class="map-layout">
+        <!-- Vehicle list with search and status filters -->
+        <section class="vehicle-panel" aria-label="Vehicles">
+          <input
+            class="vehicle-search"
+            id="vehicle-search"
+            type="search"
+            placeholder="Search plate, agency or driver"
+            aria-label="Search vehicles"
+          />
+          <div class="filter-row" id="status-filters">
+            <button class="filter-chip is-active" data-status="all">All <b id="count-all">0</b></button>
+            <button class="filter-chip" data-status="moving">Moving <b id="count-moving">0</b></button>
+            <button class="filter-chip" data-status="parked">Parked <b id="count-parked">0</b></button>
+            <button class="filter-chip" data-status="alert">Alert <b id="count-alert">0</b></button>
+            <button class="filter-chip" data-status="offline">Offline <b id="count-offline">0</b></button>
+          </div>
+          <div class="vehicle-list" id="vehicle-list"></div>
+          <p class="no-results" id="no-results" hidden>No vehicles match.</p>
+        </section>
+
+        <!-- The map, with the details of the chosen car on top -->
+        <section class="map-area">
+          <div id="live-map" class="live-map" aria-label="Map of vehicle positions"></div>
+          <div class="map-legend" aria-hidden="true">
+            <span><i class="status-dot status-moving"></i>Moving</span>
+            <span><i class="status-dot status-parked"></i>Parked</span>
+            <span><i class="status-dot status-alert"></i>Alert</span>
+            <span><i class="status-dot status-offline"></i>Offline</span>
+          </div>
+          <div class="vehicle-info" id="vehicle-info" hidden></div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Filled by js/common.js -->
+    <nav class="app-bottom-nav" id="app-bottom-nav" aria-label="App pages"></nav>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="js/data/places.js"></script>
+    <script src="js/data/vehicles.js"></script>
+    <script src="js/data/routes.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/map.js"></script>
+  </body>
+</html>

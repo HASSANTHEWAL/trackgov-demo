@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Public portal · TrackGov</title>
+    <meta name="description" content="What the government pilot fleet does today, open to everyone (simulated data)." />
+    <link rel="icon" href="assets/img/logo-mark.png" />
+    <!-- Leaflet 1.9.4, the map library (the only library we use) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/public.css" />
+  </head>
+  <!-- Not class="app": this page needs no login and has no sidebar -->
+  <body class="public-page">
+    <div class="public-bar">
+      <a class="public-logo" href="index.html"
+        ><img src="assets/img/logo-wordmark.png" alt="TrackGov" width="602" height="69"
+      /></a>
+      <span class="public-label">Public portal</span>
+      <a class="button button-secondary public-login" href="login.html">Staff login</a>
+    </div>
+
+    <main class="public-main">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Transparency portal</p>
+          <h1>Government cars, in the open.</h1>
+          <p>
+            What the 20 pilot vehicles do today: where they are, how far they drove and how much
+            fuel was bought. Driver names are not shown.
+          </p>
+        </div>
+        <div class="live-chip" title="Updates every few seconds">
+          <i class="live-dot"></i> Demo time <b id="demo-clock">--:--:--</b>
+        </div>
+      </div>
+
+      <!-- Filled by js/public.js -->
+      <div class="stat-grid" id="public-stats"></div>
+
+      <section class="panel" aria-labelledby="public-map-title">
+        <div class="panel-head">
+          <div>
+            <h2 id="public-map-title">Where the cars are now</h2>
+            <p class="panel-note">Each dot is a car. Point at it to see its plate and agency.</p>
+          </div>
+        </div>
+        <div class="public-map-area">
+          <div id="public-map" class="live-map" aria-label="Map of vehicle positions"></div>
+          <div class="map-legend" id="public-legend" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <section class="panel" aria-labelledby="agency-title">
+        <div class="panel-head">
+          <div>
+            <h2 id="agency-title">Fuel spending today, per agency</h2>
+            <p class="panel-note">
+              Today only: monthly totals will be shown once the system has recorded more than one
+              day.
+            </p>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Agency</th>
+                <th class="number">Vehicles</th>
+                <th class="number">Km driven</th>
+                <th class="number">Fuel bought</th>
+                <th class="number">Spent</th>
+                <th>Fuel check</th>
+              </tr>
+            </thead>
+            <tbody id="agency-rows"></tbody>
+          </table>
+        </div>
+        <p class="panel-note">
+          Fuel check: the fuel bought is compared with what each car's GPS distance needs. More
+          than 5% extra is checked by the Department Head.
+        </p>
+      </section>
+
+      <p class="public-foot">
+        <span class="demo">Simulated data for the expo</span>
+        Map data © OpenStreetMap contributors, routes computed with OSRM.
+      </p>
+    </main>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="js/data/places.js"></script>
+    <script src="js/data/vehicles.js"></script>
+    <script src="js/data/routes.js"></script>
+    <script src="js/data/refuels.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/fuel-data.js"></script>
+    <script src="js/public.js"></script>
+  </body>
+</html>

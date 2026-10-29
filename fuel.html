@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Fuel report · TrackGov</title>
+    <meta name="description" content="Daily fuel report: fuel bought compared with the GPS distance (simulated data)." />
+    <link rel="icon" href="assets/img/logo-mark.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/fuel.css" />
+  </head>
+  <body class="app" data-page="fuel.html">
+    <!-- Filled by js/common.js -->
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <main class="app-main">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Reports</p>
+          <h1>Fuel report</h1>
+          <p>
+            Fuel bought compared with the fuel each car's GPS distance needs, for the demo day.
+            More than 5% extra shows in red.
+          </p>
+        </div>
+        <div class="head-actions">
+          <button class="button button-secondary" id="export-csv">Export CSV</button>
+          <a class="button" href="#refuel-form">+ Log a refuel</a>
+        </div>
+      </div>
+
+      <!-- Summary numbers, filled by js/fuel.js -->
+      <div class="stat-grid" id="fuel-stats"></div>
+
+      <section class="panel" aria-labelledby="report-title">
+        <div class="panel-head">
+          <h2 id="report-title">Fuel vs distance, per vehicle</h2>
+          <div class="panel-tools">
+            <input
+              class="text-input"
+              id="report-search"
+              type="search"
+              placeholder="Search plate or agency"
+              aria-label="Search vehicles"
+            />
+            <label class="check-label"><input type="checkbox" id="only-over" /> Only over 5%</label>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Vehicle</th>
+                <th>Agency</th>
+                <th class="number">Km driven (GPS)</th>
+                <th class="number">Normal km/L</th>
+                <th class="number">Expected</th>
+                <th class="number">Bought</th>
+                <th class="number">Actual km/L</th>
+                <th class="number">Mismatch</th>
+              </tr>
+            </thead>
+            <tbody id="report-rows"></tbody>
+          </table>
+        </div>
+        <p class="panel-note">
+          Expected liters = km driven ÷ normal km/L of the model. Mismatch = (bought − expected) ÷
+          expected. Sorted with the biggest mismatch first.
+        </p>
+      </section>
+
+      <div class="two-columns">
+        <!-- The refuel form (must-have feature 3) -->
+        <section class="panel" aria-labelledby="form-title">
+          <h2 id="form-title">Log a refuel</h2>
+          <p class="panel-note">For drivers and admins. Replaces the paper fuel voucher.</p>
+          <form class="refuel-form" id="refuel-form" novalidate>
+            <label>
+              Vehicle
+              <select id="refuel-plate" required></select>
+            </label>
+            <label>
+              Time
+              <input type="time" id="refuel-time" required />
+            </label>
+            <label>
+              Liters
+              <input type="number" id="refuel-liters" min="0.01" step="0.01" placeholder="e.g. 2.50" required />
+            </label>
+            <label>
+              Total price (IDR)
+              <input type="number" id="refuel-price" min="1" step="1" placeholder="e.g. 25000" required />
+            </label>
+            <label>
+              Odometer (km)
+              <input type="number" id="refuel-odometer" min="1" step="1" placeholder="e.g. 45210" required />
+            </label>
+            <label>
+              Fuel station
+              <input type="text" id="refuel-station" placeholder="e.g. SPBU Gejayan" />
+            </label>
+            <label class="full-width">
+              Receipt photo
+              <input type="file" id="refuel-receipt" accept="image/*" />
+              <small>In this demo only the file name is saved. Photo upload comes with the backend.</small>
+            </label>
+            <p class="form-message full-width" id="form-message" role="status"></p>
+            <button class="button full-width" type="submit">Save refuel</button>
+          </form>
+        </section>
+
+        <!-- Every refuel of the demo day -->
+        <section class="panel" aria-labelledby="log-title">
+          <h2 id="log-title">Refuels today</h2>
+          <p class="panel-note" id="log-summary"></p>
+          <ul class="refuel-log" id="refuel-log"></ul>
+        </section>
+      </div>
+    </main>
+
+    <!-- Filled by js/common.js -->
+    <nav class="app-bottom-nav" id="app-bottom-nav" aria-label="App pages"></nav>
+
+    <script src="js/data/places.js"></script>
+    <script src="js/data/vehicles.js"></script>
+    <script src="js/data/routes.js"></script>
+    <script src="js/data/refuels.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/fuel-data.js"></script>
+    <script src="js/fuel.js"></script>
+  </body>
+</html>

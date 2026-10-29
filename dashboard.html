@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Dashboard · TrackGov</title>
+    <meta name="description" content="Summary of the TrackGov pilot fleet today (simulated data)." />
+    <link rel="icon" href="assets/img/logo-mark.png" />
+    <!-- Leaflet 1.9.4, the map library (the only library we use) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+  </head>
+  <body class="app" data-page="dashboard.html">
+    <!-- Filled by js/common.js -->
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <main class="app-main">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow" id="today-date">Today</p>
+          <h1 id="greeting">Good morning</h1>
+          <p>The pilot fleet today, at a glance. Simulated data.</p>
+        </div>
+        <div class="live-chip" title="Numbers update every few seconds">
+          <i class="live-dot"></i> Demo time <b id="demo-clock">--:--:--</b>
+        </div>
+      </div>
+
+      <!-- Filled by js/dashboard.js -->
+      <div class="stat-grid" id="dashboard-stats"></div>
+
+      <div class="dashboard-grid">
+        <section class="panel" aria-labelledby="map-title">
+          <div class="panel-head">
+            <div>
+              <h2 id="map-title">Fleet positions</h2>
+              <p class="panel-note">Updates every few seconds</p>
+            </div>
+            <a class="text-link" href="map.html">Open live map →</a>
+          </div>
+          <div class="mini-map-area">
+            <div id="mini-map" class="live-map" aria-label="Small map of vehicle positions"></div>
+            <div class="map-legend" id="mini-legend" aria-hidden="true"></div>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="alerts-title">
+          <div class="panel-head">
+            <div>
+              <h2 id="alerts-title">Latest alerts</h2>
+              <p class="panel-note">Stops over 30 min at non-official places</p>
+            </div>
+            <a class="text-link" href="alerts.html"><span class="count-badge" id="alert-count">0</span> All alerts →</a>
+          </div>
+          <ul class="alert-list" id="alert-list"></ul>
+        </section>
+
+        <section class="panel" aria-labelledby="fuel-title">
+          <div class="panel-head">
+            <div>
+              <h2 id="fuel-title">Fuel today, per agency</h2>
+              <p class="panel-note">Fuel bought compared with what the GPS distance needs</p>
+            </div>
+            <a class="text-link" href="fuel.html">Fuel report →</a>
+          </div>
+          <div class="agency-bars" id="agency-bars"></div>
+          <div class="bar-legend" aria-hidden="true">
+            <span><i class="bar-key bar-expected"></i>Expected from GPS</span>
+            <span><i class="bar-key bar-bought"></i>Bought</span>
+            <span><i class="bar-key bar-over"></i>Bought, over 5%</span>
+          </div>
+        </section>
+
+        <section class="panel" aria-labelledby="active-title">
+          <div class="panel-head">
+            <div>
+              <h2 id="active-title">Most driven today</h2>
+              <p class="panel-note">The 5 vehicles with the most km</p>
+            </div>
+            <a class="text-link" href="trips.html">Trip history →</a>
+          </div>
+          <ol class="active-list" id="active-list"></ol>
+        </section>
+      </div>
+    </main>
+
+    <!-- Filled by js/common.js -->
+    <nav class="app-bottom-nav" id="app-bottom-nav" aria-label="App pages"></nav>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="js/data/places.js"></script>
+    <script src="js/data/vehicles.js"></script>
+    <script src="js/data/routes.js"></script>
+    <script src="js/data/refuels.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/fuel-data.js"></script>
+    <script src="js/dashboard.js"></script>
+  </body>
+</html>

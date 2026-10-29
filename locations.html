@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Official locations · TrackGov</title>
+    <meta name="description" content="Official destinations for government cars, and adding new ones (Admin only)." />
+    <link rel="icon" href="assets/img/logo-mark.png" />
+    <!-- Leaflet 1.9.4, the map library (the only library we use) -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/map.css" />
+    <link rel="stylesheet" href="css/locations.css" />
+  </head>
+  <body class="app" data-page="locations.html">
+    <!-- Filled by js/common.js -->
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <main class="app-main">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Admin</p>
+          <h1>Official locations</h1>
+          <p>
+            Places government cars may go for official work. Parking more than 30 minutes anywhere
+            else creates an alert.
+          </p>
+        </div>
+        <span class="demo">Admin only</span>
+      </div>
+
+      <div class="locations-layout">
+        <section class="map-area locations-map-area" aria-label="Map of official locations">
+          <div id="locations-map" class="live-map"></div>
+          <div class="map-legend" aria-hidden="true">
+            <span><i class="legend-circle is-official"></i>Official</span>
+            <span><i class="legend-circle is-added"></i>Added by Admin</span>
+            <span><i class="legend-circle is-unofficial"></i>Not official</span>
+          </div>
+        </section>
+
+        <div class="locations-side">
+          <!-- Add a new official location -->
+          <section class="panel" aria-labelledby="add-title">
+            <h2 id="add-title">Add an official location</h2>
+            <p class="panel-note">Click the map to pick the spot, or use "Make official" on a place below.</p>
+            <form class="location-form" id="location-form" novalidate>
+              <label class="full-width">
+                Name
+                <input type="text" id="location-name" placeholder="e.g. Meeting venue, Ambarrukmo Plaza" required />
+              </label>
+              <label>
+                Latitude
+                <input type="number" id="location-lat" step="0.00001" placeholder="-7.78270" required />
+              </label>
+              <label>
+                Longitude
+                <input type="number" id="location-lng" step="0.00001" placeholder="110.40150" required />
+              </label>
+              <label class="full-width">
+                Radius (meters)
+                <input type="number" id="location-radius" min="50" max="2000" step="10" value="200" required />
+              </label>
+              <p class="form-message full-width" id="location-message" role="status"></p>
+              <button class="button full-width" type="submit">Add official location</button>
+            </form>
+          </section>
+
+          <!-- Filled by js/locations.js -->
+          <section class="panel" aria-labelledby="list-title">
+            <h2 id="list-title">All locations</h2>
+            <div id="location-lists"></div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <!-- Filled by js/common.js -->
+    <nav class="app-bottom-nav" id="app-bottom-nav" aria-label="App pages"></nav>
+
+    <script
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script src="js/data/places.js"></script>
+    <script src="js/data/vehicles.js"></script>
+    <script src="js/data/routes.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/locations.js"></script>
+  </body>
+</html>

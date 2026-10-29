@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Alerts · TrackGov</title>
+    <meta name="description" content="Cars parked too long at non-official places today (simulated data)." />
+    <link rel="icon" href="assets/img/logo-mark.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/alerts.css" />
+  </head>
+  <body class="app" data-page="alerts.html">
+    <!-- Filled by js/common.js -->
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <main class="app-main">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Alerts</p>
+          <h1>Unofficial stops</h1>
+          <p>
+            A car parked more than 30 minutes at a place that is not an official location.
+            Check each one, then mark it reviewed or dismiss it.
+          </p>
+        </div>
+        <span class="demo">Demo day · simulated trips</span>
+      </div>
+
+      <div class="alert-tabs" role="tablist" aria-label="Alert filter">
+        <button class="alert-tab is-active" role="tab" aria-selected="true" data-tab="new">
+          New <b id="tab-count-new">0</b>
+        </button>
+        <button class="alert-tab" role="tab" aria-selected="false" data-tab="reviewed">
+          Reviewed <b id="tab-count-reviewed">0</b>
+        </button>
+        <button class="alert-tab" role="tab" aria-selected="false" data-tab="all">
+          All <b id="tab-count-all">0</b>
+        </button>
+      </div>
+
+      <!-- Filled by js/alerts.js -->
+      <div class="alert-cards" id="alert-cards" role="tabpanel"></div>
+
+      <p class="panel-note">
+        Decisions are saved in this browser for the demo. With the backend, they will be saved on
+        the server for everyone.
+      </p>
+    </main>
+
+    <!-- Filled by js/common.js -->
+    <nav class="app-bottom-nav" id="app-bottom-nav" aria-label="App pages"></nav>
+
+    <script src="js/data/places.js"></script>
+    <script src="js/data/vehicles.js"></script>
+    <script src="js/data/routes.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/alerts.js"></script>
+  </body>
+</html>

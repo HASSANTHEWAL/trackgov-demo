@@ -1,0 +1,32 @@
+/* trips.css
+   Styles only used on the trip history page. The 3D track is styled by css/track.css,
+   the panel and table by css/app.css. */
+
+/* Space between the track and the trip list */
+.trips-panel {
+  margin-top: 28px;
+}
+
+.trip-row {
+  cursor: pointer;
+}
+
+.trip-row.is-selected {
+  background: rgba(22, 184, 166, 0.1);
+}
+
+.trip-row.is-selected td:first-child {
+  box-shadow: inset 3px 0 0 var(--teal);
+}
+
+.trip-row.is-flagged td:first-child strong {
+  color: var(--alert);
+}
+
+/* Routes can be long, so they may wrap onto two lines */
+.trip-table .route-cell {
+  min-width: 260px;
+  white-space: normal;
+  color: var(--muted);
+  font-size: 0.85rem;
+}

@@ -1,0 +1,414 @@
+/* ===== TrackGov trip track (scoped: every class and id starts with tg-) ===== */
+.tg {
+  --tg-cut: 44px;
+  --tg-deep: #0b4440;
+  --tg-alert: #f26363;
+  position: relative;
+  margin-top: clamp(28px, 4vw, 48px);
+}
+.tg-frame {
+  background: linear-gradient(
+    135deg,
+    rgba(22, 184, 166, 0.9),
+    rgba(22, 184, 166, 0.35) 45%,
+    rgba(59, 130, 246, 0.5)
+  );
+  padding: 1px;
+  clip-path: polygon(
+    var(--tg-cut) 0,
+    100% 0,
+    100% calc(100% - var(--tg-cut)),
+    calc(100% - var(--tg-cut)) 100%,
+    0 100%,
+    0 var(--tg-cut)
+  );
+}
+.tg-card {
+  background: linear-gradient(180deg, var(--navy), #071120);
+  clip-path: polygon(
+    var(--tg-cut) 0,
+    100% 0,
+    100% calc(100% - var(--tg-cut)),
+    calc(100% - var(--tg-cut)) 100%,
+    0 100%,
+    0 var(--tg-cut)
+  );
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr) 300px;
+  grid-template-areas: "side stats info" "side stage info" "player player player";
+}
+.tg-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-weight: 600;
+}
+.tg-side {
+  grid-area: side;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 56px 0 24px;
+  border-right: 1px solid var(--line);
+}
+.tg-plate {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-weight: 800;
+  font-size: 2.7rem;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  white-space: nowrap;
+}
+.tg-agency {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 0.66rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--teal);
+  font-weight: 700;
+  white-space: nowrap;
+}
+.tg-stats {
+  grid-area: stats;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 40px;
+  padding: 26px 28px 0;
+}
+.tg-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.tg-v {
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.1rem);
+  line-height: 1;
+  color: var(--teal);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+}
+.tg-v small {
+  font-size: 0.36em;
+  color: var(--text);
+  margin-left: 5px;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+.tg-date .tg-v {
+  color: var(--text);
+}
+.tg-stage {
+  grid-area: stage;
+  position: relative;
+  min-width: 0;
+}
+.tg-stage svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+.tg-info {
+  grid-area: info;
+  padding: 26px 24px 18px;
+  border-left: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  min-width: 0;
+}
+.tg-info p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.tg-info h3 {
+  margin: 2px 0 0;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+.tg-flag {
+  display: none;
+  gap: 10px;
+  align-items: flex-start;
+  background: rgba(242, 99, 99, 0.1);
+  border: 1px solid rgba(242, 99, 99, 0.45);
+  color: #ffd5d5;
+  border-radius: 10px;
+  padding: 10px 12px;
+  font-size: 0.85rem;
+  line-height: 1.35;
+}
+.tg-flag.tg-on {
+  display: flex;
+}
+.tg-flag b {
+  color: var(--tg-alert);
+}
+.tg-sched {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--line);
+}
+.tg-sched li {
+  display: grid;
+  grid-template-columns: 36px minmax(0, 1fr) auto;
+  gap: 10px;
+  align-items: baseline;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  transition: opacity 0.3s;
+}
+.tg-n {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--muted);
+  letter-spacing: -0.02em;
+}
+.tg-p {
+  font-weight: 600;
+  font-size: 0.92rem;
+  overflow-wrap: anywhere;
+}
+.tg-p em {
+  display: block;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.74rem;
+  color: var(--muted);
+}
+.tg-tm {
+  font-weight: 700;
+  font-size: 1.02rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+.tg-sched li.tg-now .tg-n,
+.tg-sched li.tg-now .tg-tm {
+  color: var(--teal);
+}
+.tg-sched li.tg-todo {
+  opacity: 0.5;
+}
+.tg-sched li.tg-off .tg-p em,
+.tg-sched li.tg-off .tg-n {
+  color: var(--tg-alert);
+}
+.tg-note {
+  font-size: 0.74rem;
+  color: var(--muted);
+  margin-top: auto;
+}
+.tg-player {
+  grid-area: player;
+  border-top: 1px solid var(--line);
+  padding: 16px 28px 22px;
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 12px 20px;
+  align-items: center;
+}
+.tg-ctrl {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.tg-play {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 0;
+  background: var(--teal);
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 0 24px rgba(22, 184, 166, 0.45);
+  cursor: pointer;
+}
+.tg-rate {
+  border: 1px solid var(--line);
+  background: transparent;
+  border-radius: 99px;
+  padding: 6px 11px;
+  font: inherit;
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--muted);
+  cursor: pointer;
+}
+.tg-rate[aria-pressed="true"] {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+.tg-readout {
+  display: flex;
+  gap: 26px;
+  flex-wrap: wrap;
+  font-weight: 700;
+  font-size: 1.2rem;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.tg-readout small {
+  font-size: 0.6rem;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  display: block;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.tg-profile {
+  grid-column: 1/-1;
+  min-width: 0;
+}
+.tg-profile svg {
+  display: block;
+  width: 100%;
+  height: 104px;
+  touch-action: none;
+  cursor: ew-resize;
+}
+.tg-nav {
+  position: absolute;
+  right: 0;
+  bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transform: translateX(50%);
+}
+.tg-nav button {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  border: 1px solid var(--teal);
+  background: var(--ink);
+  color: var(--teal);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    color 0.2s;
+}
+.tg-nav button:hover {
+  background: var(--teal);
+  color: var(--ink);
+}
+.tg-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 16px 2px 4px;
+}
+@media (max-width: 960px) {
+  .tg-chips {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+  }
+}
+.tg-chip {
+  flex: none;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+  border-radius: 99px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.78rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+.tg-chip:hover {
+  color: var(--text);
+}
+.tg-chip[aria-pressed="true"] {
+  border-color: var(--teal);
+  color: var(--teal);
+}
+.tg-chip i {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--tg-alert);
+}
+@keyframes tg-pulse {
+  0% {
+    r: 8;
+    opacity: 0.55;
+  }
+  100% {
+    r: 22;
+    opacity: 0;
+  }
+}
+.tg-halo {
+  animation: tg-pulse 1.6s ease-out infinite;
+}
+@media (max-width: 960px) {
+  .tg-card {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "side" "stats" "stage" "player" "info";
+  }
+  .tg-side {
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 52px 20px 0;
+    border-right: 0;
+    gap: 12px;
+    align-items: baseline;
+    flex-wrap: wrap;
+  }
+  .tg-plate,
+  .tg-agency {
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+  .tg-plate {
+    font-size: 2rem;
+  }
+  .tg-stats {
+    padding: 14px 20px 0;
+    gap: 14px 28px;
+  }
+  .tg-info {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding: 20px 20px 52px;
+  }
+  .tg-player {
+    padding: 14px 20px 18px;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .tg-readout {
+    gap: 14px 22px;
+    font-size: 1.1rem;
+  }
+  .tg-nav {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 10px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tg * {
+    transition: none !important;
+    animation: none !important;
+  }
+}

@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Vehicles · TrackGov</title>
+    <meta name="description" content="All vehicles of the TrackGov pilot, with their status today (simulated data)." />
+    <link rel="icon" href="assets/img/logo-mark.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/vehicles.css" />
+  </head>
+  <body class="app" data-page="vehicles.html">
+    <!-- Filled by js/common.js -->
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <main class="app-main">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Fleet</p>
+          <h1>Vehicles</h1>
+          <p>Every vehicle in the pilot, with its status right now and today's distance.</p>
+        </div>
+        <!-- Shown only to Admins (js/vehicles.js) -->
+        <button class="button" id="add-vehicle-button" hidden>+ Add vehicle</button>
+      </div>
+
+      <!-- The add form, opened with the button above (Admin only) -->
+      <section class="panel" id="add-vehicle-panel" aria-labelledby="add-vehicle-title" hidden>
+        <h2 id="add-vehicle-title">Add a vehicle</h2>
+        <p class="panel-note">
+          A new vehicle has no GPS tracker yet, so it shows as "No GPS yet" until the backend
+          connects its tracker.
+        </p>
+        <form class="vehicle-form" id="vehicle-form" novalidate>
+          <label>
+            Plate
+            <input type="text" id="vehicle-plate" placeholder="AB 1234 XY" autocomplete="off" required />
+          </label>
+          <label>
+            Model
+            <select id="vehicle-model"></select>
+          </label>
+          <label>
+            Agency
+            <select id="vehicle-agency"></select>
+          </label>
+          <label>
+            Driver
+            <input type="text" id="vehicle-driver" placeholder="Full name" required />
+          </label>
+          <p class="form-message" id="vehicle-message" role="status"></p>
+          <div class="vehicle-form-buttons">
+            <button class="button button-secondary" type="button" id="cancel-vehicle">Cancel</button>
+            <button class="button" type="submit">Save vehicle</button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel" aria-labelledby="vehicles-title">
+        <div class="panel-head">
+          <h2 id="vehicles-title">All vehicles <span class="count-label" id="vehicle-count"></span></h2>
+          <div class="panel-tools">
+            <input
+              class="text-input"
+              id="vehicle-search"
+              type="search"
+              placeholder="Search plate or driver"
+              aria-label="Search vehicles"
+            />
+            <select class="filter-select" id="agency-filter" aria-label="Filter by agency"></select>
+            <select class="filter-select" id="status-filter" aria-label="Filter by status"></select>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Vehicle</th>
+                <th>Agency</th>
+                <th>Driver</th>
+                <th>Status now</th>
+                <th class="number">Km today</th>
+                <th class="number">Normal km/L</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="vehicle-rows"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <!-- Filled by js/common.js -->
+    <nav class="app-bottom-nav" id="app-bottom-nav" aria-label="App pages"></nav>
+
+    <script src="js/data/places.js"></script>
+    <script src="js/data/vehicles.js"></script>
+    <script src="js/data/routes.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/vehicles.js"></script>
+  </body>
+</html>

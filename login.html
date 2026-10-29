@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Login · TrackGov</title>
+    <meta name="description" content="Demo login for TrackGov: choose a role (no password needed)." />
+    <link rel="icon" href="assets/img/logo-mark.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body class="login-page">
+    <!-- Left: what TrackGov is. Hidden on phones. -->
+    <div class="login-brand">
+      <div class="login-brand-text">
+        <p class="eyebrow">Fleet operations center</p>
+        <h1>Every government car, in one view.</h1>
+        <p>
+          Where each car is, where it went today, and whether its fuel matches the kilometers it
+          drove.
+        </p>
+        <ul class="login-features">
+          <li>Live map of the 20 pilot vehicles</li>
+          <li>Trip history with every stop</li>
+          <li>Daily fuel check, mismatches in red</li>
+          <li>Alerts for long stops at non-official places</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Right: the demo login -->
+    <main class="login-panel">
+      <div class="login-box">
+        <a class="login-logo" href="index.html"
+          ><img src="assets/img/logo-wordmark.png" alt="TrackGov" width="602" height="69"
+        /></a>
+        <p class="eyebrow">Welcome</p>
+        <h2>Sign in to TrackGov</h2>
+        <p class="login-intro">
+          This is a demo: choose a role and continue. No password is needed, and your choice is
+          only saved in this browser.
+        </p>
+
+        <form id="login-form">
+          <fieldset class="role-options" id="role-options">
+            <legend>Role</legend>
+            <!-- Filled by js/login.js from ROLES in js/common.js -->
+          </fieldset>
+          <p class="form-message is-error" id="login-message" role="status"></p>
+          <button class="button login-button" type="submit">Continue</button>
+        </form>
+
+        <div class="login-divider"><span>or</span></div>
+        <p class="login-public">
+          <a class="text-link" href="public.html">See the public portal (no login) →</a>
+        </p>
+        <a class="login-back" href="index.html">← Back to the website</a>
+      </div>
+    </main>
+
+    <script src="js/data/places.js"></script>
+    <script src="js/data/vehicles.js"></script>
+    <script src="js/data/routes.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>

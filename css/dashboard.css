@@ -1,0 +1,223 @@
+/* dashboard.css
+   Styles only used on the dashboard. Cards, panels and status colors come from css/app.css;
+   the small map uses the dark map styles from css/map.css. */
+
+/* Two columns: the wide map and fuel cards on the left, the lists on the right */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 20px;
+}
+
+.dashboard-grid .panel {
+  margin-bottom: 0;
+}
+
+.text-link {
+  color: var(--teal);
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.panel-head .panel-note {
+  margin-top: 4px;
+}
+
+/* ---------- small map ---------- */
+
+.mini-map-area {
+  position: relative;
+  height: 340px;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+/* map.css makes the live map taller on phones. The small map keeps the height of its box. */
+.mini-map-area .live-map {
+  height: 100%;
+  min-height: 0;
+}
+
+/* ---------- alert list ---------- */
+
+.count-badge {
+  padding: 3px 12px;
+  border-radius: 99px;
+  background: rgba(242, 99, 99, 0.16);
+  color: var(--alert);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.alert-list,
+.active-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.alert-list li {
+  display: flex;
+  gap: 12px;
+  padding: 12px 14px;
+  border: 1px solid rgba(242, 99, 99, 0.3);
+  border-radius: 12px;
+  background: var(--ink);
+}
+
+.alert-list .alert-time {
+  flex: none;
+  color: var(--alert);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.alert-list strong,
+.active-list strong {
+  display: block;
+}
+
+.alert-list small,
+.active-list small {
+  display: block;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.alert-list a {
+  display: inline-block;
+  margin-top: 4px;
+  color: var(--teal);
+  font-size: 0.82rem;
+}
+
+/* ---------- fuel per agency ---------- */
+
+.agency-bars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.agency-name {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+}
+
+.agency-name small {
+  color: var(--muted);
+}
+
+.agency-name small.is-over {
+  color: var(--alert);
+  font-weight: 600;
+}
+
+/* Each bar is a track with a colored part. The width of the colored part is set in js/dashboard.js. */
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.bar-track {
+  flex: 1;
+  height: 10px;
+  border-radius: 99px;
+  background: var(--navy2);
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 99px;
+}
+
+.bar-value {
+  width: 64px;
+  color: var(--muted);
+  font-size: 0.8rem;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar-expected {
+  background: var(--blue);
+}
+
+.bar-bought {
+  background: var(--teal);
+}
+
+.bar-over {
+  background: var(--alert);
+}
+
+.bar-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 18px;
+  color: var(--muted);
+  font-size: 0.8rem;
+}
+
+.bar-legend span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.bar-key {
+  width: 14px;
+  height: 8px;
+  border-radius: 99px;
+}
+
+/* ---------- most driven list ---------- */
+
+.active-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 4px;
+  border-bottom: 1px solid var(--line);
+}
+
+.active-list li:last-child {
+  border-bottom: 0;
+}
+
+.active-rank {
+  width: 24px;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+.active-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.active-km {
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 1100px) {
+  .dashboard-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .mini-map-area {
+    height: 280px;
+  }
+}

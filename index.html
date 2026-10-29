@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>TrackGov — Movement, Under Control.</title>
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/track.css" />
+  </head>
+  <body class="loading">
+    <div class="curtain" id="cur" aria-hidden="true">
+      <div class="ld">
+        <div class="lg lg-b"></div>
+        <img class="lw-b" src="assets/img/logo-wordmark.png" alt="" width="602" height="69" /><img
+          class="lt-b"
+          src="assets/img/logo-tagline.png"
+          alt=""
+          width="545"
+          height="19"
+        />
+      </div>
+      <span id="lab">TrackGov</span><b id="cnt">0</b>
+    </div>
+    <div class="pg" aria-hidden="true"></div>
+    <div class="bgfx" aria-hidden="true">
+      <i class="o o1"></i><i class="o o2"></i><i class="o o3"></i
+      ><svg viewBox="0 0 600 600" fill="none" stroke="#16b8a6" stroke-width="1">
+        <defs>
+          <g id="ct">
+            <path d="M300 80C420 70 530 150 540 280S450 520 300 530 70 440 60 300 180 90 300 80Z" />
+            <path
+              d="M300 120C400 112 490 180 498 285S425 480 300 488 108 415 100 300 200 128 300 120Z"
+            />
+            <path
+              d="M300 160C380 154 450 210 456 290S400 440 300 446 146 390 140 300 220 166 300 160Z"
+            />
+            <path
+              d="M300 200C360 196 410 238 414 295S375 400 300 404 186 365 182 300 240 204 300 200Z"
+            />
+          </g>
+        </defs>
+        <use href="#ct" />
+        <use
+          href="#ct"
+          transform="translate(300 300) scale(1.55) rotate(20) translate(-300 -300)"
+        />
+        <use
+          href="#ct"
+          transform="translate(300 300) scale(2.3) rotate(-15) translate(-300 -300)"
+        /></svg
+      ><b class="sk"></b><b class="sk"></b><b class="sk"></b>
+    </div>
+    <header id="top">
+      <div class="wrap bar">
+        <a class="mark" href="#hero" aria-label="TrackGov — home"
+          ><span class="lg lg-s" aria-hidden="true"></span
+          ><img class="lw-s" src="assets/img/logo-wordmark.png" alt="" width="602" height="69"
+        /></a>
+        <button class="burger" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+          <span class="lbl">Menu</span><span class="ic" aria-hidden="true"><i></i><i></i></span>
+        </button>
+      </div>
+    </header>
+    <div class="menu" id="menu" inert role="dialog" aria-modal="true" aria-label="Main menu">
+      <div class="mc">
+        <figure class="t t-sedan" style="--i: 0">
+          <img
+            src="assets/img/sedan.jpg"
+            alt="Black official sedan with Indonesian flags on a Yogyakarta road"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Official fleet</figcaption>
+        </figure>
+        <figure class="t t-yogya" style="--i: 1">
+          <img
+            src="assets/img/yogyakarta-aerial.jpg"
+            alt="Aerial view of Yogyakarta with the Tugu intersection and Mount Merapi"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Yogyakarta</figcaption>
+        </figure>
+        <figure class="t t-detail" style="--i: 2">
+          <img
+            src="assets/img/sedan-detail.jpg"
+            alt="Close-up of the sedan grille and headlights"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Detail</figcaption>
+        </figure>
+        <figure class="t t-suv" style="--i: 3">
+          <img
+            src="assets/img/suv-highway.jpg"
+            alt="Black government SUV driving along a highway"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>On the road</figcaption>
+        </figure>
+        <figure class="t t-control" style="--i: 4">
+          <img
+            src="assets/img/control-room.jpg"
+            alt="Fleet operations room with tracking screens"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption>Operations</figcaption>
+        </figure>
+      </div>
+      <nav class="mn" aria-label="Main">
+        <ul>
+          <li>
+            <a href="#hero" data-hot="sedan"
+              ><em aria-hidden="true">01</em><span style="--i: 0">Home</span></a
+            >
+          </li>
+          <li>
+            <a href="#tracking" data-hot="yogya"
+              ><em aria-hidden="true">02</em><span style="--i: 1">Live Tracking</span></a
+            >
+          </li>
+          <li>
+            <a href="#capabilities" data-hot="suv"
+              ><em aria-hidden="true">03</em><span style="--i: 2">Fleet</span></a
+            >
+          </li>
+          <li>
+            <a href="#intelligence" data-hot="control"
+              ><em aria-hidden="true">04</em><span style="--i: 3">Reports</span></a
+            >
+          </li>
+          <li>
+            <a href="#about" data-hot="detail"
+              ><em aria-hidden="true">05</em><span style="--i: 4">About</span></a
+            >
+          </li>
+          <li>
+            <a href="login.html" data-hot="sedan"
+              ><em aria-hidden="true">06</em><span style="--i: 5">Login</span></a
+            >
+          </li>
+        </ul>
+      </nav>
+      <p class="mf">TrackGov · Demonstration build</p>
+      <svg
+        class="cont"
+        viewBox="0 0 600 600"
+        fill="none"
+        stroke="#16b8a6"
+        stroke-width="1"
+        aria-hidden="true"
+      >
+        <path d="M300 80C420 70 530 150 540 280S450 520 300 530 70 440 60 300 180 90 300 80Z" />
+        <path
+          d="M300 120C400 112 490 180 498 285S425 480 300 488 108 415 100 300 200 128 300 120Z"
+        />
+        <path
+          d="M300 160C380 154 450 210 456 290S400 440 300 446 146 390 140 300 220 166 300 160Z"
+        />
+        <path
+          d="M300 200C360 196 410 238 414 295S375 400 300 404 186 365 182 300 240 204 300 200Z"
+        />
+        <path
+          d="M300 240C335 238 370 262 372 298S350 360 300 362 228 338 226 300 265 242 300 240Z"
+        />
+      </svg>
+    </div>
+
+    <main>
+      <section class="hero" id="hero" style="padding: 0">
+        <div class="hs">
+          <div class="vid">
+            <video
+              id="hv"
+              autoplay
+              loop
+              muted
+              playsinline
+              preload="metadata"
+              poster="assets/img/hero-poster.jpg"
+              aria-hidden="true"
+              tabindex="-1"
+            >
+              <source src="assets/video/hero.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="dim" aria-hidden="true"></div>
+          <div class="ghost" aria-hidden="true">TRACKGOV</div>
+          <div class="hud" aria-hidden="true">
+            <svg viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice">
+              <path
+                id="rt"
+                d="M-20 520C200 480 330 560 520 470S800 330 960 380 1160 280 1240 300"
+                fill="none"
+                stroke="rgba(22,184,166,.55)"
+                stroke-width="2"
+                stroke-dasharray="6 10"
+              >
+                <animate
+                  attributeName="stroke-dashoffset"
+                  from="160"
+                  to="0"
+                  dur="6s"
+                  repeatCount="indefinite"
+                />
+              </path>
+              <circle r="6" fill="#16b8a6">
+                <animateMotion dur="9s" repeatCount="indefinite">
+                  <mpath href="#rt" />
+                </animateMotion>
+              </circle>
+              <circle r="16" fill="none" stroke="#16b8a6" opacity=".4">
+                <animateMotion dur="9s" repeatCount="indefinite">
+                  <mpath href="#rt" />
+                </animateMotion>
+              </circle>
+            </svg>
+            <div class="chip" style="--k: 26; right: 9%; top: 24%">
+              <div class="ci" id="hero-car-chip">Live tracking</div>
+            </div>
+            <div class="chip" style="--k: -18; right: 24%; top: 64%">
+              <div class="ci">Fuel <b id="hero-fuel-chip">0 L</b> today</div>
+            </div>
+            <div class="chip" style="--k: 14; right: 5%; top: 50%">
+              <div class="ci">Alerts <b id="hero-alerts-chip">0</b></div>
+            </div>
+            <span class="hudl">Simulated telemetry · demonstration</span>
+          </div>
+          <div class="stats">
+            <div><b class="cnt" id="hero-vehicles" data-to="0">0</b><span>Vehicles</span></div>
+            <div><b class="cnt" id="hero-active" data-to="0">0</b><span>Active</span></div>
+            <div><b class="cnt" id="hero-alerts" data-to="0">0</b><span>Alerts</span></div>
+            <i class="demo">Demo data</i>
+          </div>
+          <div class="wrap">
+            <h1 aria-label="Movement, Under Control.">
+              <span><em>Movement,</em></span
+              ><span><em>Under Control.</em></span>
+            </h1>
+            <p class="lede fade" style="animation-delay: 1.7s">
+              A unified view of government fleet movement, operations, and performance.
+            </p>
+            <div class="ctas fade" style="animation-delay: 1.9s">
+              <a class="btn p" href="#tracking">Explore Live Tracking</a
+              ><a class="btn s" href="#intro">Discover TrackGov</a>
+            </div>
+          </div>
+          <div class="ph2">
+            <small class="eyebrow">One platform</small>
+            <p>Every vehicle.</p>
+            <p>Every route.</p>
+            <p>One view.</p>
+          </div>
+          <div class="scroll" aria-hidden="true">Scroll<b></b></div>
+        </div>
+      </section>
+
+      <div class="marq" aria-hidden="true">
+        <div class="mt">
+          <span>Movement — Control — Precision — </span
+          ><span>Movement — Control — Precision — </span>
+        </div>
+      </div>
+      <section class="intro" id="intro">
+        <div class="pin">
+          <div class="wrap">
+            <p class="eyebrow rv">01 — Platform</p>
+            <h2 class="rv" style="--d: 0.1s">
+              One picture of every journey.
+              <span class="m">From the motor pool to the motorway.</span>
+            </h2>
+            <p class="rv" style="--d: 0.2s">
+              TrackGov brings vehicle location, trip history, fuel use and alerts into a single,
+              calm interface, so agencies can see what is moving, why, and at what cost.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="hz" id="capabilities" aria-label="Capabilities">
+        <div class="hzp">
+          <div class="hzt">
+            <article class="pn" data-n="01">
+              <span class="no">01 — Live Tracking</span>
+              <h3>See every<br />vehicle.</h3>
+              <p>One map for the whole fleet, once the tracking backend is connected.</p>
+            </article>
+            <article class="pn" data-n="02">
+              <span class="no">02 — Refuels</span>
+              <h3>Log every<br />refuel.</h3>
+              <p>Liters, price, odometer and a receipt photo for every refuel.</p>
+            </article>
+            <article class="pn" data-n="03">
+              <span class="no">03 — Fuel</span>
+              <h3>Track every<br />litre.</h3>
+              <p>Fuel use by vehicle and by day, with anomalies surfaced early.</p>
+            </article>
+            <article class="pn" data-n="04">
+              <span class="no">04 — Reports</span>
+              <h3>Prove every<br />trip.</h3>
+              <p>Trip history and performance reports ready for review.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="pho" id="city" aria-label="Yogyakarta">
+        <div class="phs">
+          <div
+            class="phi"
+            role="img"
+            aria-label="Aerial view of Yogyakarta with the Tugu intersection and Mount Merapi"
+          ></div>
+          <div class="pht">
+            <p class="eyebrow">Yogyakarta</p>
+            <h2>A city always in motion.</h2>
+          </div>
+        </div>
+      </section>
+      <section id="fleet">
+        <div class="wrap">
+          <div class="head">
+            <div>
+              <p class="eyebrow rv">02 — Fleet overview</p>
+              <h2 class="rv">The fleet, at a glance.</h2>
+            </div>
+            <span class="demo rv">Demonstration data · backend not connected</span>
+          </div>
+          <div class="cards">
+            <div class="card rv">
+              <div class="n" id="fleet-vehicles">–</div>
+              <p>Registered vehicles</p>
+            </div>
+            <div class="card rv" style="--d: 0.1s">
+              <div class="n teal" id="fleet-active">–</div>
+              <p>Active now</p>
+            </div>
+            <div class="card rv" style="--d: 0.2s">
+              <div class="n" id="fleet-trips">–</div>
+              <p>Trips today</p>
+            </div>
+            <div class="card rv" style="--d: 0.3s">
+              <div class="n" id="fleet-alerts">–</div>
+              <p>Open alerts</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="how" id="how" aria-label="How it works">
+        <div class="hws">
+          <div class="hn" aria-hidden="true">01</div>
+          <div>
+            <p class="eyebrow">How it works</p>
+            <ol>
+              <li class="on">
+                <h3>Install</h3>
+                <p>A tracking device is fitted to each government vehicle.</p>
+              </li>
+              <li>
+                <h3>Transmit</h3>
+                <p>Position, speed and fuel readings are sent to the TrackGov server.</p>
+              </li>
+              <li>
+                <h3>Monitor</h3>
+                <p>Vehicles, routes and alerts appear together in one dashboard.</p>
+              </li>
+              <li>
+                <h3>Report</h3>
+                <p>Trips and fuel use are compiled into reports for review.</p>
+              </li>
+            </ol>
+            <span class="demo">Planned workflow · backend not yet connected</span>
+          </div>
+        </div>
+      </section>
+      <section
+        id="tracking"
+        style="background: linear-gradient(transparent, rgba(10, 22, 40, 0.5), transparent)"
+      >
+        <div class="wrap">
+          <div class="head">
+            <div>
+              <p class="eyebrow rv">03 — Live tracking</p>
+              <h2 class="rv">Yogyakarta, in view.</h2>
+            </div>
+            <span class="demo rv">Real Jogja roads · simulated trips</span>
+          </div>
+          <div class="tg" id="tg">
+            <div class="tg-frame">
+              <div class="tg-card" role="region" aria-label="Trip replay">
+                <div class="tg-side">
+                  <span class="tg-plate" id="tg-plate">AB 1564 UV</span
+                  ><span class="tg-agency" id="tg-agency">Setda</span>
+                </div>
+                <div class="tg-stats">
+                  <div class="tg-stat tg-date">
+                    <span class="tg-label">Date</span
+                    ><span class="tg-v" id="tg-sDate">28<small>OCT</small></span>
+                  </div>
+                  <div class="tg-stat">
+                    <span class="tg-label">Distance</span
+                    ><span class="tg-v" id="tg-sDist">0<small>KM</small></span>
+                  </div>
+                  <div class="tg-stat">
+                    <span class="tg-label">Moving time</span
+                    ><span class="tg-v" id="tg-sMove">0<small>MIN</small></span>
+                  </div>
+                  <div class="tg-stat">
+                    <span class="tg-label">Avg speed</span
+                    ><span class="tg-v" id="tg-sAvg">0<small>KM/H</small></span>
+                  </div>
+                  <div class="tg-stat">
+                    <span class="tg-label">Stops</span><span class="tg-v" id="tg-sStops">0</span>
+                  </div>
+                </div>
+                <div class="tg-stage">
+                  <svg id="tg-track" role="img" aria-label="Trip route"></svg>
+                </div>
+                <aside class="tg-info">
+                  <div>
+                    <span class="tg-label">Vehicle</span>
+                    <h3 id="tg-vName">Toyota Avanza</h3>
+                    <p id="tg-vMeta">Driver</p>
+                  </div>
+                  <div class="tg-flag" id="tg-flag" role="status">
+                    <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M12 3l10 18H2z" fill="none" stroke="#f26363" stroke-width="2" />
+                      <path
+                        d="M12 10v5M12 18v.5"
+                        stroke="#f26363"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                      /></svg
+                    ><span id="tg-flagText"></span>
+                  </div>
+                  <div>
+                    <span class="tg-label">Trip schedule</span>
+                    <ol class="tg-sched" id="tg-sched"></ol>
+                  </div>
+                  <p class="tg-note" id="tg-fuel"></p>
+                </aside>
+                <div class="tg-player">
+                  <div class="tg-ctrl">
+                    <button class="tg-play" id="tg-play" aria-label="Play replay">
+                      <svg id="tg-playIcon" width="18" height="18" viewBox="0 0 24 24">
+                        <path d="M7 4l13 8-13 8z" fill="currentColor" />
+                      </svg>
+                    </button>
+                    <button class="tg-rate" data-r="30" aria-pressed="false">30×</button>
+                    <button class="tg-rate" data-r="90" aria-pressed="true">90×</button>
+                    <button class="tg-rate" data-r="300" aria-pressed="false">300×</button>
+                  </div>
+                  <div class="tg-readout">
+                    <span><small>Time</small><b id="tg-rClock">07:00</b></span>
+                    <span><small>Speed</small><b id="tg-rSpeed">0 km/h</b></span>
+                    <span><small>Covered</small><b id="tg-rDist">0.0 km</b></span>
+                    <span><small>Status</small><b id="tg-rState">Ready</b></span>
+                  </div>
+                  <div class="tg-profile">
+                    <svg
+                      id="tg-prof"
+                      aria-label="Speed over the trip. Click or drag to jump to a moment."
+                    ></svg>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tg-nav">
+              <button id="tg-prev" aria-label="Previous vehicle">
+                <svg width="18" height="18" viewBox="0 0 24 24">
+                  <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" />
+                </svg>
+              </button>
+              <button id="tg-next" aria-label="Next vehicle">
+                <svg width="18" height="18" viewBox="0 0 24 24">
+                  <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" />
+                </svg>
+              </button>
+            </div>
+            <div class="tg-chips" id="tg-chips" aria-label="Choose a vehicle"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="hz" id="gallery" aria-label="Photo gallery">
+        <div class="hzp">
+          <div class="hzt">
+            <div class="gh">
+              <p class="eyebrow">Gallery</p>
+              <h2>Fleet in focus.</h2>
+            </div>
+            <figure class="gp wide">
+              <div
+                class="gi gi-sedan"
+                role="img"
+                aria-label="Black official sedan with Indonesian flags"
+              ></div>
+              <span>Official fleet</span>
+            </figure>
+            <figure class="gp">
+              <div
+                class="gi gi-yogya"
+                role="img"
+                aria-label="Aerial view of Yogyakarta"
+              ></div>
+              <span>Yogyakarta</span>
+            </figure>
+            <figure class="gp">
+              <div
+                class="gi gi-suv"
+                role="img"
+                aria-label="Government SUV on the highway"
+              ></div>
+              <span>On the road</span>
+            </figure>
+            <figure class="gp">
+              <div
+                class="gi gi-control"
+                role="img"
+                aria-label="Fleet operations room"
+              ></div>
+              <span>Operations</span>
+            </figure>
+            <figure class="gp wide">
+              <div
+                class="gi gi-detail"
+                role="img"
+                aria-label="Sedan grille and headlights"
+              ></div>
+              <span>Detail</span>
+            </figure>
+          </div>
+        </div>
+      </section>
+      <section class="split" aria-label="Fleet insight">
+        <div class="wrap">
+          <h2 aria-label="Fleet insight">
+            <span data-slide="-1" aria-hidden="true">FLEET</span
+            ><span data-slide="1" aria-hidden="true">INSIGHT</span>
+          </h2>
+          <p class="rv">From fuel to trip history, every number in one place, ready for review.</p>
+        </div>
+      </section>
+      <section id="intelligence">
+        <div class="wrap">
+          <div class="head">
+            <div>
+              <p class="eyebrow rv">04 — Fleet intelligence</p>
+              <h2 class="rv">Fuel, trips, reports.</h2>
+            </div>
+            <span class="demo rv">Demonstration data</span>
+          </div>
+          <div class="grid2">
+            <div class="panel chart rv">
+              <h3>Fuel monitoring</h3>
+              <p>Fuel bought today, per agency (liters)</p>
+              <!-- Filled by js/landing.js -->
+              <div class="bars" id="fuel-bars" role="img" aria-label="Fuel bought today per agency"></div>
+            </div>
+            <div class="panel chart rv" style="--d: 0.15s">
+              <h3>Trip history</h3>
+              <p>Latest trips today</p>
+              <table>
+                <caption style="position: absolute; left: -9999px">
+                  Latest trips today
+                </caption>
+                <thead>
+                  <tr>
+                    <th>Vehicle</th>
+                    <th>Route</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <!-- Filled by js/landing.js -->
+                <tbody id="recent-trips"></tbody>
+              </table>
+            </div>
+            <div class="panel chart rv" style="--d: 0.3s">
+              <h3>Reports &amp; analytics</h3>
+              <p id="fuel-check-text">Fuel check today: cars whose fuel matches their distance</p>
+              <div
+                class="n teal"
+                id="fuel-check-percent"
+                style="font-size: 3.4rem; font-weight: 700; letter-spacing: -0.05em"
+              >
+                0%
+              </div>
+              <div
+                id="fuel-check-meter"
+                style="height: 8px; border-radius: 9px; background: var(--navy2); margin-top: 16px"
+                role="img"
+                aria-label="Fuel check today"
+              >
+                <div
+                  id="fuel-check-bar"
+                  style="
+                    width: 0%;
+                    height: 100%;
+                    border-radius: 9px;
+                    background: linear-gradient(90deg, var(--blue), var(--teal));
+                  "
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="wrap about">
+          <div>
+            <p class="eyebrow rv">About</p>
+            <h2 class="rv">Clear, accountable fleet management.</h2>
+          </div>
+          <div class="rv" style="--d: 0.15s">
+            <p>
+              TrackGov is a concept for monitoring government vehicles and fuel use. This page is a
+              front-end showcase: tracking data, accounts and reports will be connected once the
+              backend is ready.
+            </p>
+            <ul>
+              <li>Vehicle tracking <span>01</span></li>
+              <li>Fuel monitoring <span>02</span></li>
+              <li>Trip history <span>03</span></li>
+              <li>Reports &amp; analytics <span>04</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+      <div class="marq" aria-hidden="true">
+        <div class="mt">
+          <span>Movement — Control — Precision — </span
+          ><span>Movement — Control — Precision — </span>
+        </div>
+      </div>
+      <section class="final" id="login">
+        <div class="wrap">
+          <p class="eyebrow rv">05 — Get started</p>
+          <h2 class="rv">Movement,<br />under control.</h2>
+          <div class="ctas rv" style="--d: 0.15s">
+            <a class="btn p" href="#tracking">Explore Live Tracking</a
+            ><a class="btn s" href="login.html">Login</a>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="mega rv" aria-hidden="true">TRACKGOV</div>
+      <div class="wrap">
+        <span>© TrackGov — Government Vehicle &amp; Fuel Monitoring System</span
+        ><span>All figures shown are demonstration data.</span>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/data/places.js"></script>
+    <script src="js/data/vehicles.js"></script>
+    <script src="js/data/routes.js"></script>
+    <script src="js/data/refuels.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/fuel-data.js"></script>
+    <script src="js/track.js"></script>
+    <script src="js/landing.js"></script>
+  </body>
+</html>

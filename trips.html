@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Trip history · TrackGov</title>
+    <meta name="description" content="Route, stops and stop times of each vehicle's trip today (simulated data)." />
+    <link rel="icon" href="assets/img/logo-mark.png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="stylesheet" href="css/track.css" />
+    <link rel="stylesheet" href="css/trips.css" />
+  </head>
+  <body class="app" data-page="trips.html">
+    <!-- Filled by js/common.js -->
+    <aside class="app-sidebar" id="app-sidebar"></aside>
+
+    <main class="app-main">
+      <div class="page-head">
+        <div>
+          <p class="eyebrow">Trip history</p>
+          <h1>Trip replay</h1>
+          <p>
+            Each car's route today: where it started, the road it took, where it stopped and for
+            how long. Real Jogja roads, simulated trips.
+          </p>
+        </div>
+        <span class="demo">Demo day · simulated trips</span>
+      </div>
+
+      <!-- The 3D trip track. Same markup as in index.html; js/track.js fills it. -->
+      <div class="tg" id="tg">
+        <div class="tg-frame">
+          <div class="tg-card" role="region" aria-label="Trip replay">
+            <div class="tg-side">
+              <span class="tg-plate" id="tg-plate">AB 1564 UV</span
+              ><span class="tg-agency" id="tg-agency">Setda</span>
+            </div>
+            <div class="tg-stats">
+              <div class="tg-stat tg-date">
+                <span class="tg-label">Date</span
+                ><span class="tg-v" id="tg-sDate">28<small>OCT</small></span>
+              </div>
+              <div class="tg-stat">
+                <span class="tg-label">Distance</span
+                ><span class="tg-v" id="tg-sDist">0<small>KM</small></span>
+              </div>
+              <div class="tg-stat">
+                <span class="tg-label">Moving time</span
+                ><span class="tg-v" id="tg-sMove">0<small>MIN</small></span>
+              </div>
+              <div class="tg-stat">
+                <span class="tg-label">Avg speed</span
+                ><span class="tg-v" id="tg-sAvg">0<small>KM/H</small></span>
+              </div>
+              <div class="tg-stat">
+                <span class="tg-label">Stops</span><span class="tg-v" id="tg-sStops">0</span>
+              </div>
+            </div>
+            <div class="tg-stage">
+              <svg id="tg-track" role="img" aria-label="Trip route"></svg>
+            </div>
+            <aside class="tg-info">
+              <div>
+                <span class="tg-label">Vehicle</span>
+                <h3 id="tg-vName">Toyota Avanza</h3>
+                <p id="tg-vMeta">Driver</p>
+              </div>
+              <div class="tg-flag" id="tg-flag" role="status">
+                <svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M12 3l10 18H2z" fill="none" stroke="#f26363" stroke-width="2" />
+                  <path
+                    d="M12 10v5M12 18v.5"
+                    stroke="#f26363"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                  /></svg
+                ><span id="tg-flagText"></span>
+              </div>
+              <div>
+                <span class="tg-label">Trip schedule</span>
+                <ol class="tg-sched" id="tg-sched"></ol>
+              </div>
+              <p class="tg-note" id="tg-fuel"></p>
+            </aside>
+            <div class="tg-player">
+              <div class="tg-ctrl">
+                <button class="tg-play" id="tg-play" aria-label="Play replay">
+                  <svg id="tg-playIcon" width="18" height="18" viewBox="0 0 24 24">
+                    <path d="M7 4l13 8-13 8z" fill="currentColor" />
+                  </svg>
+                </button>
+                <button class="tg-rate" data-r="30" aria-pressed="false">30×</button>
+                <button class="tg-rate" data-r="90" aria-pressed="true">90×</button>
+                <button class="tg-rate" data-r="300" aria-pressed="false">300×</button>
+              </div>
+              <div class="tg-readout">
+                <span><small>Time</small><b id="tg-rClock">07:00</b></span>
+                <span><small>Speed</small><b id="tg-rSpeed">0 km/h</b></span>
+                <span><small>Covered</small><b id="tg-rDist">0.0 km</b></span>
+                <span><small>Status</small><b id="tg-rState">Ready</b></span>
+              </div>
+              <div class="tg-profile">
+                <svg
+                  id="tg-prof"
+                  aria-label="Speed over the trip. Click or drag to jump to a moment."
+                ></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tg-nav">
+          <button id="tg-prev" aria-label="Previous vehicle">
+            <svg width="18" height="18" viewBox="0 0 24 24">
+              <path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" />
+            </svg>
+          </button>
+          <button id="tg-next" aria-label="Next vehicle">
+            <svg width="18" height="18" viewBox="0 0 24 24">
+              <path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" />
+            </svg>
+          </button>
+        </div>
+        <div class="tg-chips" id="tg-chips" aria-label="Choose a vehicle"></div>
+      </div>
+
+      <!-- All of today's trips. Filled by js/trips.js -->
+      <section class="panel trips-panel" aria-labelledby="trips-title">
+        <div class="panel-head">
+          <h2 id="trips-title">Today's trips</h2>
+          <div class="panel-tools">
+            <input
+              class="text-input"
+              id="trip-search"
+              type="search"
+              placeholder="Search plate, agency or place"
+              aria-label="Search trips"
+            />
+            <label class="check-label"><input type="checkbox" id="only-flagged" /> Only flagged stops</label>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table trip-table">
+            <thead>
+              <tr>
+                <th>Vehicle</th>
+                <th>Route</th>
+                <th class="number">Left</th>
+                <th class="number">Back</th>
+                <th class="number">Distance</th>
+                <th class="number">Duration</th>
+                <th class="number">Stops</th>
+                <th>Check</th>
+              </tr>
+            </thead>
+            <tbody id="trip-rows"></tbody>
+          </table>
+        </div>
+        <p class="panel-note">Click a trip to replay it above. "Flagged" means a stop of more than 30 minutes at a place that is not an official location.</p>
+      </section>
+    </main>
+
+    <!-- Filled by js/common.js -->
+    <nav class="app-bottom-nav" id="app-bottom-nav" aria-label="App pages"></nav>
+
+    <script src="js/data/places.js"></script>
+    <script src="js/data/vehicles.js"></script>
+    <script src="js/data/routes.js"></script>
+    <script src="js/simulation.js"></script>
+    <script src="js/format.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/track.js"></script>
+    <script src="js/trips.js"></script>
+  </body>
+</html>
